@@ -1,83 +1,24 @@
 # API @cmda-minor-web 2023 - 2024
 
-Het web is een geweldige plek en de beschikbare technologieën ervan zijn vandaag de dag krachtiger dan ooit tevoren.
-De kracht van het web ligt in het feit dat het een platform is dat voor iedereen beschikbaar is en dat het gebaseerd is
-op open standaarden. De technologieën worden ontworpen en gespecificeerd op basis van consensus en zijn niet in handen
-van één enkele entiteit.
+(Add nice intro whenever I'm done with this project)
 
-Desondanks zijn er veel mensen en bedrijven die vinden dat het internet niet voldoet aan hun behoeften. Dit blijkt uit
-de pogingen van grote techbedrijven om hun eigen afgesloten ecosystemen te creëren. Ze streven hiermee naar controle over
-zowel de gebruikerservaring als de gegenereerde data.
+## Week 1
 
-**In dit vier weken durende vak zullen we de kracht van het web ervaren en kijken hoe we (mobiele) web apps kunnen maken die
-net zo aantrekkelijk zijn als native mobiele apps. We beginnen met het maken van een server-side gerenderde applicatie
-waarbij we geleidelijk de gebruikerservaring verbeteren met relevante beschikbare web API's.**
+The task at hand is to create a progressive web app, making use of an API. It is mostly about server side JavaScript so we're using node, express and some sort of templating engine. I have dabbled in server side JS a bit in blok tech, but I haven't tried to do anything with it since. So this is definitely gonna be a refresher for me.
 
-## Doelen
+What I do know is what I want to use for the templating engine, which is liquidJS. I've used EJS in the past, but I didn't really like working with it so this seems like an opportunity to try something else out.
 
-Na deze cursus zul je:
+I've been thinking of 2 main concept I might want to do for my project.
 
-- In staat zijn om een server-side gerenderde applicatie te maken.
-- In staat zijn om een enerverende gebruikerservaring te creëren.
-- Een breder begrip hebben van het web en zijn mogelijkheden.
+### Concept idea's...
 
-## Opdracht
+**RuneScape account information**
 
-In dit vak zullen we een van de meest voorkomende app-concepten van vandaag gebruiken en ontdekken dat we deze kunnen
-maken met moderne webtechnologie.
+This would be the third time I do something with RuneScape... In any case, I would use the [Wise Old Man API](https://docs.wiseoldman.net/players-api/player-endpoints) using the players API to retrieve player information. With this API I can find everything about someones account. So, the idea is to create a website where you can search for someones username. Once you find a player you can enter the players detailspage where you can find all sorts of data associated to that player. Things like level statistics, boss killcount and other activities.
 
-Voorbeelden:
+**Schiphol Flight API**
 
-- Maak je eigen streamingplatform (Netflix/Spotify).
-- Maak je eigen doom-scroll-app (Instagram/TikTok).
-- Maak je eigen chatapplicatie (WhatsApp/Signal).
-- Een andere app die je zelf leuk vindt...
+With the Schiphol Flight API you can find all sorts of up-to-date information about flights on a specific date. I'm particularly interested in flightnumber, destination airport and aircraft type. So my idea with this one is that you can select a date and then see each flight of that date. There's also a quirk with this API that it will only get 10 'datapoints' before it will add pagination. So I would only be able to see 10 flights per page in this case. So another challenge with this concept is to add multiple pages if it's needed.
 
-Voorbeeld content API's die je kan gebruiken:
-
-- [MovieDB API](https://developer.themoviedb.org/reference/intro/getting-started)
-- [Rijksmuseum API](https://data.rijksmuseum.nl/object-metadata/api/)
-- [Spotify API](https://developer.spotify.com/documentation/web-api)
-
-Voorbeelden van Web API's die je kan gebruiken:
-
-- [Page Transition API voor animaties tusse npagina's](https://developer.mozilla.org/en-US/docs/Web/API/Page_Transitions_API)
-- [Web Animations API voor complexe animaties](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
-- [Service Worker API voor installable web apps](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
-- [Web Push API voor push notifications](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
-- [Server sent events voor realtime functionaliteit](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
-- [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
-- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
-- [Web Share API voor sharen van content binnen de context van de gebruiker](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-- ...
-
-De lijst is eindeloos, laat je vooral inspireren op de overzichtspagina van [MDN](https://developer.mozilla.org/en-US/docs/Web/API).
-
-## Beoordeling
-
-Je zal beoordeeld worden op basis van je code, creativiteit en je gedocumenteerde proces. Om het vak te halen zal je aan
-de 3 criteria hieronder moeten voldoen. Een hoger cijfer kan je halen door verder te gaan dan de basis.
-
-| Tekortkomingen | Criterium                                                                                                                                                                                                                                 | Verbeteringen |
-|:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|
-|                | *Project* - Je app werkt en is online beschikbaar. Daarnaast heb je je concept, technologieen, gebruikte Web API's en proces duidelijk gedocumenteerd in je `README.md`.                                                                  |               |
-|                | *Functionaliteit* - Je hebt minstens een overzicht en een detailpagina. Hoe meer dynamischer je functionaliteit.hoe beter.                                                                                                                |               |
-|                | *Enhancements* - Je laat zien dat je begrijpt hoe het web werkt door meerdere Web API's te gebruiken om een zo aantrekkelijk mogelijke gebruikerservaring neer te zetten. Je gebruikt je eigen creativiteit om iets uniks neer te zetten. |               |
-
-## Planning
-
-| Planning                   | Maandag             | Dinsdag               | Vrijdag                |
-|----------------------------|---------------------|-----------------------|------------------------|
-| Week 1 - Kickoff & concept | Pasen               | Introductie en uitleg | Feedback gesprekken    |
-| Week 2 - The baseline      | College + workshops | Workshops             | Feedback gesprekken    |
-| Week 3 - Enhance           | College + workshops | Workshops             | Feedback gesprekken    |
-| Week 4 - Enhance & wrap up | Individuele vragen  | Individuele vragen    | Beoordelingsgesprekken |
-
-## Resources
-
-- Om serverside te kunnen renderen maak ik gebruik van [TinyHttp](https://github.com/tinyhttp), maar je kan ook kiezen voor [Express](https://expressjs.com/).
-- Voor templating maak ik gebruik van [LiquidJS](https://liquidjs.com/), maar je kan ook kiezen voor [EJS](https://ejs.co/).
-- Voor build tooling(CSS en JS) maak ik gebruik van [Vite](https://vitejs.dev/).
-
-Voel je vrij om je eigen technolgieën te kiezen, zolang je maar kan uitleggen waarom je deze hebt gekozen en zolang
-je geen gebruik maakt van een framework zoals React, Vue, Svelte, Angular, etc. 
+### Progress
+So far I've thought of the concepts so I will have to choose one to start working on it. I've also made a server with LiquidJS as the template engine so that's working nicely so far. It's still hard to wrap my head around how everything works, but I'll just have to keep trying stuff and asking a lot of questions.
