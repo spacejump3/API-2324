@@ -8,8 +8,10 @@
   "dependencies": {
     "@tinyhttp/app": "latest",
     "@tinyhttp/logger": "latest",
+    "dotenv": "^16.4.5",
     "liquidjs": "^10.10.2",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "serve-static": "^1.15.0"
   },
   "type": "module"
 }
