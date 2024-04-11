@@ -10,10 +10,6 @@ dotenv.config();
 const app = new App();
 const engine = new Liquid();
 
-engine
-  .parseAndRender("{{name | capitalize}}", { name: "alice" })
-  .then(console.log); // outputs 'Alice'
-
 app.use(serveStatic('public'));
 
 // schiphol api
@@ -22,7 +18,7 @@ app.get('/:page?', (req, res) => {
     
     const options = {
         hostname: 'api.schiphol.nl',
-        path: '/public-flights/flights',
+        path: `/public-flights/flights?page=${page}&sort=+scheduleTime`,
         method: 'GET',
         headers: {
             'ResourceVersion': 'v4',
@@ -42,7 +38,6 @@ app.get('/:page?', (req, res) => {
         response.on('end', async () => {
             const body = Buffer.concat(chunks);
             const data = JSON.parse(body.toString());
-            console.log(data);
     
             const flights = data.flights;
     
@@ -51,7 +46,7 @@ app.get('/:page?', (req, res) => {
     
             const flightsOfToday = flights.filter(flight => flight.scheduleDate === todayString);
     
-            console.log(flightsOfToday);
+            // console.log(JSON.stringify(flightsOfToday, null, 2)); // make sure I get the full console log including arrays
     
             // Render the index page using Liquid
             const html = await engine.renderFile('./views/index.liquid', { flights: flightsOfToday, page: page });
