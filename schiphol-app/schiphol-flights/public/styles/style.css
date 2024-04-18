@@ -1,35 +1,72 @@
+:root {
+  --color-white: #fff;
+}
+
+/* airliners */
+.KLM {
+  --color-1: #00a1e4;
+  background-color: var(--color-1);
+}
+.TRA {
+  --color-1: #00d66c;
+  background-color: var(--color-1);
+}
+.VIR {
+  --color-1: #db0d37;
+  background-color: var(--color-1);
+}
+.DAL {
+  --color-1: #DA0039;
+  --color-2: #003269;
+  background-image: linear-gradient(var(--color-1), var(--color-2));
+}
+.AFR {
+  --color-1: #002556;
+  --color-2: #EC0000;
+  background-image: linear-gradient(to right, var(--color-1), var(--color-white), var(--color-2));
+}
+
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(207, 207, 207);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(207, 207, 207);
 
-    padding: 1em;
+  padding: 1em;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 main ul {
-    margin: auto;
-    li {
-        background-color: white;
-        box-shadow: .1em .1em .5em #0005;
-        /* width: 15em; */
-        max-width: max-content;
-        padding: 1em;
-        text-align: center;
-    
-        &:not(:first-child) {
-            margin: 1em 0 0 0;
-        }
+  margin: auto;
+
+  a {
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    background-color: white;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
     }
+  }
+
+  li {
+    width: 35em;
+    text-align: center;
+
+    &:not(:first-child) {
+      margin: 1em 0 0 0;
+    }
+  }
 }

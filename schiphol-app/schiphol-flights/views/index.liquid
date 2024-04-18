@@ -1,7 +1,7 @@
-{% include "./partials/header.liquid" %}
 {% include "./partials/head.liquid" %}
 
 <body>
+    {% include "./partials/header.liquid" %}
     <main>
         <h1>Schiphol flights of today</h1>
 
@@ -12,13 +12,18 @@
 
         <ul>
             {% for flight in flights %}
-                <li>{{ flight.flightName }} - {{ flight.aircraftType.iataMain }} - {{ flight.prefixICAO }} - Status: {{ flight.publicFlightState.flightStates }}</li>
+                <li>
+                    <img src="{{ flight.airline.logo_url }}" alt="">
+                    <a href="/flights/{{ flight.flightName }}" class="{{ flight.prefixICAO }}">
+                    {{ flight.flightName }} - {{ flight.aircraftType.iataMain }} - {{ flight.prefixICAO }} {{ flight.prefixIATA }} - Flight direction: {{ flight.flightDirection }}  - Status: {{ flight.publicFlightState.flightStates }} Dest: {{ flight.route.destinations }}
+                    </a>
+                </li>
             {% endfor %}
         </ul>
 
         <a href="/{{ prevPage }}">Previous page</a>
         <a href="/{{ nextPage }}">Next page</a>
     </main>
+    {% include "./partials/footer.liquid" %}
 </body>
 
-{% include "./partials/footer.liquid" %}
