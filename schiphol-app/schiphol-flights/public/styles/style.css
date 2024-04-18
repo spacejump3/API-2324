@@ -4,26 +4,21 @@
 
 /* airliners */
 .KLM {
-  --color-1: #00a1e4;
-  background-color: var(--color-1);
+  --color-1: rgba(0, 160, 228);
 }
 .TRA {
   --color-1: #00d66c;
-  background-color: var(--color-1);
 }
 .VIR {
   --color-1: #db0d37;
-  background-color: var(--color-1);
 }
 .DAL {
-  --color-1: #DA0039;
+  --color-1: #da0039;
   --color-2: #003269;
-  background-image: linear-gradient(var(--color-1), var(--color-2));
 }
 .AFR {
   --color-1: #002556;
-  --color-2: #EC0000;
-  background-image: linear-gradient(to right, var(--color-1), var(--color-white), var(--color-2));
+  --color-2: #ec0000;
 }
 
 html {
@@ -55,18 +50,28 @@ main ul {
     text-decoration: none;
     background-color: white;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     &:hover,
     &:focus-visible {
       text-decoration: underline;
+      /* outline: solid 3px black; */
+      outline: solid 3px var(--color-1);
     }
   }
 
   li {
-    width: 35em;
-    text-align: center;
+    width: 20em;
+    text-align: end;
 
     &:not(:first-child) {
       margin: 1em 0 0 0;
     }
   }
+}
+
+img {
+  width: 7em;
 }

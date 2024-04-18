@@ -12,7 +12,7 @@ const engine = new Liquid();
 
 app.use(serveStatic("public"));
 
-let flights = []
+let flights = [];
 
 // schiphol api
 app.get("/:page?", async (req, res) => {
@@ -43,6 +43,54 @@ app.get("/:page?", async (req, res) => {
 
       if (data && data.flights) {
         flights = data.flights;
+
+        // Fetch airline data for each flight
+        const airlinePromises = flights.map((flight) => {
+          return new Promise((resolve, reject) => {
+            const airlineOptions = {
+              hostname: "api.api-ninjas.com",
+              path: `/v1/airlines?icao=${flight.prefixICAO}`,
+              method: "GET",
+              headers: {
+                "X-Api-Key": process.env.API_NINJAS_KEY,
+              },
+            };
+
+            const airlineRequest = https.request(
+              airlineOptions,
+              (airlineResponse) => {
+                let airlineChunks = [];
+
+                airlineResponse.on("data", (chunk) => {
+                  airlineChunks.push(chunk);
+                });
+
+                airlineResponse.on("end", () => {
+                  const airlineBody = Buffer.concat(airlineChunks);
+                  const airlineData = JSON.parse(airlineBody.toString());
+
+                  // Log the airline data
+                  console.log("Airline data:", airlineData);
+
+                  // Add the airline data to the flight data
+                  flight.airlineData = airlineData;
+
+                  resolve();
+                });
+              }
+            );
+
+            airlineRequest.on("error", (error) => {
+              console.error("Error:", error);
+              reject(error);
+            });
+
+            airlineRequest.end();
+          });
+        });
+
+        // Wait for all airline API requests to complete
+        await Promise.all(airlinePromises);
 
         const today = new Date();
         const todayString = `${today.getFullYear()}-${String(
