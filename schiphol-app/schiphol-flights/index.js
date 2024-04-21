@@ -125,9 +125,7 @@ app.get("/:page?", async (req, res) => {
 app.get("/flights/:flightName", async (req, res) => {
   const flightName = req.params.flightName;
 
-  // Get the flight data...
-  // This will depend on how you're storing your flight data.
-  // For example, if you're storing your flights in an array, you might use the `find` method:
+  // Get the flight data
   const flight = flights.find((flight) => flight.flightName === flightName);
 
   if (flight) {

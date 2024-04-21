@@ -6,8 +6,11 @@
         <h1>{{ flight.flightName }}</h1>
         <p>This flight is going to {{ flight.route.destinations }}</p>
 
-        <h2>*Airline name*</h2>
-        <p></p>
+        <h2>Airline: {{ flight.airlineData[0].name }}</h2>
+
+        <h2>flightstatus</h2>
+        <img src="/animations/{{ flight.publicFlightState.flightStates }}.gif" alt="">
+        <p class='{{ flight.publicFlightState.flightStates }}'></p>
     </main>
     {% include "./partials/footer.liquid" %}
 </body>

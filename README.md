@@ -35,3 +35,33 @@ I've chosen the Schiphol Flights API instead of Wise Old Man, since I've previou
 As you can see there are some weird texts on each list item. These are from left to right: flight name, aircraft type, airliner and flightstatus. So what I want to do is that you can click on one of these list items and check in more detail what each of these mean. The detailpage will be in the style of the airliner, so if it's a KLM flight, it'd be blue and white. And the main thing is it would explain what the current status of the plane is. For example DEP means the aircraft is currently taxiing to the runway. So I want to give the most common flight statuses some kind of icon or small animation that visually shows what's happening. So one plane could be a KLM 737 that's delayed on it's way to Heathrow airport. The detailpage would be in the KLM style, showing an medium sized airplane that's flying very slow. 
 
 I might want to enhance this app with another API, currently I'm thinking about the [airports](https://api-ninjas.com/api/airports) API which shows a bit more information about the airport. In the Schiphol Flights API it will only give you the airport code, but a normal person wouldn't even know what it means. So with that API I could maybe change it to the normal name of the airport (i.e. Schiphol Airport instead of EHAM).
+
+## Week 3
+
+### Airlines API
+Sadly I didn't make a lot of progress this week. I had a small loss of motivation which resulted in having not made as much progress as I wanted. Still however, I wanted to add something extra. Last week I talked about wanting to use the airports API to use the normal names of airports. Well I haven't used that one YET but I did use another endpoint called airlines. With this one I was able to get the images if the airlines to display in the list. 
+
+![image of the main page with airline logo's](./readme-img/logos.png)
+
+### Flight statuses
+I have also been able to showcase different texts/images based on the status of the airplane. For example, the current detailpage looks like this:
+
+![image of the detailpage containing a gif of an airplane flying](./readme-img/detailpage.png)
+
+So the gif is not correct, but the idea is that depending on the status a different gif of a plane should be displayed. Since the status of this example was ARR, it should've been an animation of an airplane taxiing to the gate. But you get the idea. The way I do this is simply by giving the source of the gif the name of the flightstatus:
+
+```html
+<img src="/animations/{{ flight.publicFlightState.flightStates }}.gif" alt="">
+```
+
+So if a call a gif in that folder ARR.gif, it will show that specific gif.
+
+### Going forward
+So I've made <em>some</em> progress, but not a lot. After the last feedback conversation I've decided to make a priority list of what I want to do and try to get as far as possible:
+- Finish detailpage gifs
+- Better styling
+- Fix images that are not showing
+- Manually add Transavia logo
+- Add airport API
+
+If I atleast finish the first 2 or 3 points, I should get a pretty decent, albeit very simple app going on. So I'm not super happy with my progress and how it will probably end up, but atleast I should have something presentable before the final test. 

@@ -1,5 +1,6 @@
 :root {
   --color-white: #fff;
+  --regular-br: 5px;
 }
 
 /* airliners */
@@ -14,15 +15,42 @@
 }
 .DAL {
   --color-1: #da0039;
-  --color-2: #003269;
 }
 .AFR {
-  --color-1: #002556;
-  --color-2: #ec0000;
+  --color-1: #ec0000;
+}
+.CXA {
+  --color-1: #ec0000;
+}
+
+/* Flightstates */
+.DEP {
+  &::after {
+    content: "This aircraft is currently taxiing to the runway";
+  }
+}
+
+.LND {
+  &::after {
+    content: "This aircraft has landed and is taxiing to the gate";
+  }
+}
+
+.ARR {
+  &::after {
+    content: "This aircraft has landed and is taxiing to the gate";
+  }
+}
+
+.CNX {
+  &::after {
+    content: "This flight has been cancelled";
+  }
 }
 
 html {
   box-sizing: border-box;
+  font-size: 1.3em;
 }
 
 * {
@@ -32,46 +60,130 @@ html {
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgb(207, 207, 207);
+}
 
-  padding: 1em;
+/* navigation */
+nav {
+  ul {
+    display: flex;
+    background-color: white;
+    padding: 2em;
+    box-shadow: 
+      0 .5em .5em hsla(216, 100%, 59%, 0.2),
+      0 3em 3em hsla(216, 100%, 59%, 0.2);
+  }
+
+  /* li {
+    padding: 1em;
+  } */
+
+  a {
+    padding: 2em;
+    &:hover {
+      background-color: grey;
+    }
+  }
+}
+
+/* main */
+h1 {
+  margin: 1.5em 0;
 }
 
 li {
   list-style: none;
 }
 
-main ul {
+main {
+  align-items: center;
+  text-align: center;
+}
+
+section {
+  width: 50em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin: auto;
+}
+
+section > a {
+  /* background-color: rgb(64, 81, 137); */
+  /* color: rgb(139, 153, 188); */
+  text-decoration: none;
+  border-radius: 100%;
+  padding: 1em;
+  height: 5em;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
+
+  &:first-child {
+    &:hover {
+      transform: translateX(-.2em);
+    }
+  }
+
+  &:last-child {
+    &:hover {
+      transform: translateX(.2em);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(239, 243, 255);
+  }
+
+  img {
+    width: 3em;
+  }
+}
+
+main ul {
+  overflow: scroll;
+  height: 60vh;
+  padding: 1em;
+  width: 100%;
 
   a {
     display: block;
     padding: 1em;
     text-decoration: none;
-    background-color: white;
+    background-color: #F6F8FB;
+    color: black;
+    border-radius: var(--regular-br);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: .2s;
 
     &:hover,
     &:focus-visible {
       text-decoration: underline;
-      /* outline: solid 3px black; */
-      outline: solid 3px var(--color-1);
+      transform: translateY(-.3em);
+      box-shadow:
+        0 .2em .2em hsla(216, 100%, 59%, 0.2),
+        0 .5em .5em hsla(216, 100%, 59%, 0.2);
+      background-color: #d7e7ff;
     }
   }
 
   li {
-    width: 20em;
     text-align: end;
+    margin: 1em auto;
+  }
 
-    &:not(:first-child) {
-      margin: 1em 0 0 0;
-    }
+  img {
+    width: 7em;
   }
 }
 
 img {
-  width: 7em;
+  width: 60%;
 }
