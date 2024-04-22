@@ -8,16 +8,27 @@
         {% assign prevPage = page | minus: 1 %}
         {% assign nextPage = page | plus: 1 %}
         <section>
-            <a href="/{{ nextPage }}"><img src="/img/arrow-back.svg" alt="arrow pointing to the left"></a>
-            {% comment %} <a href="/{{ prevPage }}">Previous page</a>
-            <a href="/{{ nextPage }}">Next page</a> {% endcomment %}
-
+            {% if page > 0 %}
+                <a href="/{{ prevPage }}"><img src="/img/arrow-back.svg" alt="arrow pointing to the left"></a>
+            {% else %}
+                <a href="#" disabled><img src="/img/arrow-back-disabled.svg" alt="arrow pointing to the left"></a>
+            {% endif %}
+            {% comment %} <a href="/{{ prevPage }}"><img src="/img/arrow-back.svg" alt="arrow pointing to the left"></a> {% endcomment %}
             <ul>
                 {% for flight in flights %}
                     <li>
                         <a href="/flights/{{ flight.flightName }}" class='{{ flight.prefixICAO }}'>
-                        <img src="{{ flight.airlineData[0].logo_url }}" alt="{{ flight.airlineData[0].name }}">
-                        Flight {{ flight.flightName }} - Status: {{ flight.publicFlightState.flightStates }}
+                        {% comment %} <img src="{{ flight.airlineData[0].logo_url }}" alt="{{ flight.airlineData[0].name }}"> {% endcomment %}
+
+                        {% if flight.prefixICAO == "TRA" and flight.airlineData[0].logo_url == null %}
+                            <img src="/img/TRA.png" alt="{{ flight.airlineData[0].name }}">
+                        {% else %}
+                            <img src="{{ flight.airlineData[0].logo_url }}" alt="{{ flight.airlineData[0].name }}">
+                        {% endif %}
+
+                        <p>Flight {{ flight.flightName }}</p>
+                        <p>Status: {{ flight.publicFlightState.flightStates }}</p>
+                         
                         </a>
                     </li>
                 {% endfor %}
@@ -25,6 +36,4 @@
             <a href="/{{ nextPage }}"><img src="/img/arrow-forward.svg" alt="arrow pointing to the right"></a>
         </section>
     </main>
-    {% include "./partials/footer.liquid" %}
 </body>
-

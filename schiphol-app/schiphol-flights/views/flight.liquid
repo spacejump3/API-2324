@@ -1,16 +1,20 @@
 {% include "./partials/head.liquid" %}
 
-<body>
+<body class='detailpage'>
     {% include "./partials/header.liquid" %}
     <main>
-        <h1>{{ flight.flightName }}</h1>
-        <p>This flight is going to {{ flight.route.destinations }}</p>
+        <div>
+            <h1>Flight {{ flight.flightName }}</h1>
+            {% if flight.prefixICAO == "TRA" and flight.airlineData[0].logo_url == null %}
+                <img src="/img/TRA.png" alt="{{ flight.airlineData[0].name }}">
+            {% else %}
+                <img src="{{ flight.airlineData[0].logo_url }}" alt="{{ flight.airlineData[0].name }}">
+            {% endif %}
+        </div>
 
         <h2>Airline: {{ flight.airlineData[0].name }}</h2>
 
-        <h2>flightstatus</h2>
-        <img src="/animations/{{ flight.publicFlightState.flightStates }}.gif" alt="">
+        <img src="/animations/{{ flight.publicFlightState.flightStates }}.gif" alt="" class='statusGif'>
         <p class='{{ flight.publicFlightState.flightStates }}'></p>
     </main>
-    {% include "./partials/footer.liquid" %}
 </body>

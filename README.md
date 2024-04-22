@@ -65,3 +65,26 @@ So I've made <em>some</em> progress, but not a lot. After the last feedback conv
 - Add airport API
 
 If I atleast finish the first 2 or 3 points, I should get a pretty decent, albeit very simple app going on. So I'm not super happy with my progress and how it will probably end up, but atleast I should have something presentable before the final test. 
+
+## Week 4
+
+### Final touch ups
+In the weekend and monday before the final assignment I've managed to mostly get my app in a decent state. 
+
+On the main page I now have different hover states depending on which flight you hover on. I've also added the transavia logo manually because that one didn't have a logo for some reason. 
+
+![image of the main page with accent color of airliner](./readme-img/mainpage-2.png)
+
+I also changed the accent color of the page based on the color of the airliner. And for the most common flightstatusses I've added animations that correspond to that status.
+
+![image of the detail page with accent color of airliner and correct status animation](./readme-img/detailpage-2.png)
+
+### Reflection
+So... The site works. But obviously it's very simple and just uses the basic things I can do with the API. So from that angle I would've liked to do something more creative with the data that I got from the API. 
+
+But I'm also happy with some stuff. For one, the fact that I got it working with logo's and pagination! I'm very happy with that and it actually looks decent. I sadly wasn't able to fix the airliners without a name or logo, but most of them are working. I'm also glad that I could do something with the colors of the airline branding and that it's working properly.
+
+### Reflection rant...
+However, I'm still kinda frustrated with how I did this project. I constantly am feeling like I can't do anything besides the absolute basics in JavaScript, let alone with nodejs and whatever modules that are being added. One of my goals this minor was to gain a better understanding of what I'm actually doing when coding. Initially I meant this in general, but the more projects I do, should definitely be meant for JavaScript. Anytime I start to do something in JavaScript, I try do to it myself. I'm reading the documentation, googling stuff etc. But I really don't get any progress whatsoever. So at some point I just resort to asking chatgpt or github copilot or whatever and it will fix it for me very quickly. But I don't learn anything from that, and it's very frustrating. I can't do it entirely myself, but I'm also not learning anything when asking AI. This ended up being very demotivating which results in me not enjoying it too much.
+
+I guess the solution is to ask the teachers for help and advice, but it seems like I am a bit too afraid to seem incompetent or whatever. I'm not sure what it is, but I should really take action and ask for advice whenever I am stuck. Definitely some advice to myself to take with me to the next project. I know this final section was a bit rambly, but I definitely needed to get this off my chest.

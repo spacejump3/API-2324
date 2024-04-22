@@ -1,32 +1,46 @@
 :root {
   --color-white: #fff;
   --regular-br: 5px;
+  --color-1: hsla(216, 100%, 59%, 0.2);
 }
 
 /* airliners */
 .KLM {
-  --color-1: rgba(0, 160, 228);
+  --color-1: rgba(0, 160, 228, .2);
 }
-.TRA {
-  --color-1: #00d66c;
+.TRA,
+.CPA {
+  --color-1: rgba(0, 214, 108, .2);
 }
-.VIR {
-  --color-1: #db0d37;
+.VIR,
+.DAL,
+.AFR,
+.CES,
+.SWR {
+  --color-1: rgba(219, 13, 55, .2);
 }
-.DAL {
-  --color-1: #da0039;
-}
-.AFR {
-  --color-1: #ec0000;
-}
+
 .CXA {
-  --color-1: #ec0000;
+  --color-1: rgba(108, 175, 226, 0.2);
+}
+.KLA {
+  --color-1: rgba(74, 27, 231, 0.2);
+}
+.HVN,
+.ETD {
+  --color-1: rgba(237, 176, 44, 0.2);
 }
 
 /* Flightstates */
 .DEP {
   &::after {
-    content: "This aircraft is currently taxiing to the runway";
+    content: "This aircraft is boarded and currently taxiing to the runway";
+  }
+}
+
+.DEPDEL {
+  &::after {
+    content: "This aircraft is boarded and currently taxiing to the runway, but but with a delay of atleast 10 minutes";
   }
 }
 
@@ -36,9 +50,21 @@
   }
 }
 
+.LNDEXP {
+  &::after {
+    content: "This aircraft has landed and is taxiing to the gate, but with a delay of atleast 10 minutes";
+  }
+}
+
 .ARR {
   &::after {
-    content: "This aircraft has landed and is taxiing to the gate";
+    content: "This aircraft has landed and baggageclaim is completely handled";
+  }
+}
+
+.ARREXP {
+  &::after {
+    content: "This aircraft has landed and baggageclaim is completely handled, but has been delayed by atleast 10 minutes";
   }
 }
 
@@ -68,19 +94,16 @@ nav {
     display: flex;
     background-color: white;
     padding: 2em;
-    box-shadow: 
-      0 .5em .5em hsla(216, 100%, 59%, 0.2),
-      0 3em 3em hsla(216, 100%, 59%, 0.2);
+      box-shadow: 0 0.5em 0.5em var(--color-1),
+      0 3em 3em var(--color-1);
   }
-
-  /* li {
-    padding: 1em;
-  } */
 
   a {
     padding: 2em;
+    color: #2e82ff;
+    text-decoration: none;
     &:hover {
-      background-color: grey;
+      background-color: #d7e7ff;
     }
   }
 }
@@ -100,7 +123,7 @@ main {
 }
 
 section {
-  width: 50em;
+  width: 60em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,8 +132,6 @@ section {
 }
 
 section > a {
-  /* background-color: rgb(64, 81, 137); */
-  /* color: rgb(139, 153, 188); */
   text-decoration: none;
   border-radius: 100%;
   padding: 1em;
@@ -120,17 +141,17 @@ section > a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: .2s;
+  transition: 0.2s;
 
   &:first-child {
     &:hover {
-      transform: translateX(-.2em);
+      transform: translateX(-0.2em);
     }
   }
 
   &:last-child {
     &:hover {
-      transform: translateX(.2em);
+      transform: translateX(0.2em);
     }
   }
 
@@ -149,28 +170,29 @@ main ul {
   height: 60vh;
   padding: 1em;
   width: 100%;
-
+  border-top: solid 4px rgb(217, 221, 234);
+  border-bottom: solid 4px rgb(217, 221, 234);
+  
   a {
     display: block;
     padding: 1em;
     text-decoration: none;
-    background-color: #F6F8FB;
+    background-color: #f6f8fb;
     color: black;
     border-radius: var(--regular-br);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: .2s;
+    transition: 0.2s;
 
     &:hover,
     &:focus-visible {
       text-decoration: underline;
-      transform: translateY(-.3em);
-      box-shadow:
-        0 .2em .2em hsla(216, 100%, 59%, 0.2),
-        0 .5em .5em hsla(216, 100%, 59%, 0.2);
-      background-color: #d7e7ff;
+      transform: translateY(-0.3em);
+      box-shadow: 0 0.2em 0.2em var(--color-1,hsla(216, 100%, 59%, 0.2)),
+        0 0.5em 0.5em var(--color-1, hsla(216, 100%, 59%, 0.2));
+      background-color: var(--color-1, #d7e7ff);
     }
   }
 
@@ -184,6 +206,35 @@ main ul {
   }
 }
 
-img {
-  width: 60%;
+.statusGif {
+  max-width: 70%;
+  border-radius: 1em;
+  box-shadow: 0.5em 0.5em 1em #0005;
+  margin: 1em  0;
+}
+
+.detailpage {
+  div {
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: 1em 0;
+
+    img {
+      width: 7em;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
 }
