@@ -1,6 +1,6 @@
 # API @cmda-minor-web 2023 - 2024
 
-(Add nice intro whenever I'm done with this project)
+Welcome to my schiphol flights app! Here you can read my progress!
 
 ## Week 1
 
